@@ -1,12 +1,17 @@
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 import { Styles } from "../styles";
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from "expo-status-bar";
 
 export function ProductsScreen() {
-    return (
-        <View style={Styles.containerFeed}>
-            <Text style={Styles.Text}>From 'Products Screen'</Text>
-            <StatusBar style="auto" />
-        </View>
-    );
-  };
+  return (
+    <View>
+      <View style={{ margin: 15 }}>
+        <Button title="Add product" onPress={() => Alert.alert("Product")} />
+      </View>
+      <View style={Styles.containerFeed}>
+        <Text style={Styles.Text}>From 'Products Screen'</Text>
+      </View>
+      <StatusBar style="auto" />
+    </View>
+  );
+}
