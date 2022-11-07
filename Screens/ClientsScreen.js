@@ -4,8 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 
 export function ClientsScreen() {
     return (
-        <View style={Styles.containerSettings}>
-            <Text style={Styles.Text}>From 'Clients Screen'</Text>
+        <View style={Styles.containerClients}>
+            <Text style={Styles.Text}>Clients</Text>
             <StatusBar style="auto" />
         </View>
     );

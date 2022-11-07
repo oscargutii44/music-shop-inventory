@@ -1,7 +1,7 @@
 import { NavigationContainer  } from "@react-navigation/native";
 
 //Screens
-import { MainScreen } from './Screens/MainScreen';
+import { MainScreen } from './Screens/HomeScreen';
 import { ClientsScreen } from './Screens/ClientsScreen';
 import { ProductsScreen } from './Screens/ProductsScreen';
 import { SalesScreen } from "./Screens/SalesScreen";

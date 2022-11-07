@@ -5,7 +5,7 @@ export const Styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: "bold"
     },
-    containerSettings: {
+    containerClients: {
       flex: 1,
       backgroundColor: '#A9A9A9',
       alignItems: 'center',
@@ -17,13 +17,13 @@ export const Styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    containerFeed: {
+    containerProducts: {
         flex: 1,
         backgroundColor: '#87CEFA',
         alignItems: 'center',
         justifyContent: 'center'
     },
-    containerProfile: {
+    containerSales: {
         flex: 1,
         backgroundColor: '#008B8B',
         alignItems: 'center',
