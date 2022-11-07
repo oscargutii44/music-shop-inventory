@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 //Screen imports
-import { MainScreen } from './Screens/MainScreen';
+import { HomeScreen } from './Screens/HomeScreen';
 import { ClientsScreen } from './Screens/ClientsScreen';
 import { ProductsScreen } from './Screens/ProductsScreen';
 import { SalesScreen } from "./Screens/SalesScreen";
@@ -18,8 +18,8 @@ const HomeStackNav  = createNativeStackNavigator();
 //Creating Stack Navigation Component
 export function HomeStack() {
     return(
-        <HomeStackNav.Navigator initialRouteName="LoginScreen">
-            <HomeStackNav.Screen name="HomeStackScreen" component={MainScreen} ></HomeStackNav.Screen>
+        <HomeStackNav.Navigator initialRouteName="HomeScreen">
+            <HomeStackNav.Screen name="HomeScreen" component={HomeScreen} ></HomeStackNav.Screen>
             <HomeStackNav.Screen name="ProductsScreen" component={ProductsScreen}></HomeStackNav.Screen>
             <HomeStackNav.Screen name="SalesScreen" component={SalesScreen}></HomeStackNav.Screen>
             <HomeStackNav.Screen name="ClientsScreen" component={ClientsScreen}></HomeStackNav.Screen>

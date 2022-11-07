@@ -7,10 +7,15 @@ export function ProductsScreen() {
     <View>
       <View style={{ margin: 15 }}>
         <Button title="Add product" onPress={() => Alert.alert("Adding Product Modal Nav")} />
+        <Text style={Styles.Text}>Products</Text>
       </View>
+
+      
+      {/* seems like we just can use one view
       <View style={Styles.containerFeed}>
-        <Text style={Styles.Text}>From 'Products Screen'</Text>
-      </View>
+        <Button title="Add product" onPress={() => Alert.alert("Adding Product Modal Nav")} />
+        <Text style={Styles.Text}>'Products'</Text>
+      </View> */}
       <StatusBar style="auto" />
     </View>
   );

@@ -8,8 +8,8 @@ export function SalesScreen() {
       <View style={{ margin: 15 }}>
         <Button title="Add Sale" onPress={() => Alert.alert("Adding Sale Modal Nav")} />
       </View>
-      <View style={Styles.containerProfile}>
-        <Text style={Styles.Text}>From 'Sales Screen'</Text>
+      <View style={Styles.containerSales}>
+        <Text style={Styles.Text}>Sales</Text>
       </View>
       <StatusBar style="auto" />
     </View>
