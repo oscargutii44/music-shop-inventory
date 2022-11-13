@@ -19,7 +19,7 @@ const HomeStackNav = createNativeStackNavigator();
 //Creating Stack Navigation Component
 export function HomeStack() {
   return (
-    <HomeStackNav.Navigator initialRouteName="AddOrEditProduct">
+    <HomeStackNav.Navigator initialRouteName="HomeScreen">
       <HomeStackNav.Screen
         name="HomeScreen"
         component={HomeScreen}
