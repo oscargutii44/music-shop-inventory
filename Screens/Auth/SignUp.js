@@ -36,7 +36,8 @@ export function SignUp() {
       <View style={StylesAuth.container}>
       <Text>Sign Up</Text>
   
-      <TextInput 
+      <TextInput
+      autoCapitalize="none" 
       value={email} 
       onChangeText={(email) => {setEmail(email)}}  
       placeholder='email' style={StylesAuth.TextBox}>
