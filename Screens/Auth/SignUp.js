@@ -45,7 +45,7 @@ export function SignUp() {
 
       <TextInput 
       value={password} 
-      secureTextEntry={true} 
+      //secureTextEntry={true} 
       onChangeText={(password) => {setPassword(password)}}  
       placeholder='password' style={StylesAuth.TextBox}>
       </TextInput>

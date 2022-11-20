@@ -50,7 +50,8 @@ export function Login() {
 
       <TextInput 
       value={password} 
-      secureTextEntry
+      autoCapitalize="none"
+      //secureTextEntry
       onChangeText={(password) => {setPassword(password)}}  
       placeholder='password' 
       style={StylesAuth.TextBox}>
