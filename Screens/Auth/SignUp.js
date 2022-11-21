@@ -43,7 +43,8 @@ export function SignUp() {
       placeholder='email' style={StylesAuth.TextBox}>
       </TextInput>
 
-      <TextInput 
+      <TextInput
+      autoCapitalize="none"
       value={password} 
       //secureTextEntry={true} 
       onChangeText={(password) => {setPassword(password)}}  
