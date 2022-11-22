@@ -7,7 +7,7 @@ import { HomeScreen } from "./Screens/HomeScreen";
 import { ClientsScreen } from "./Screens/ClientsScreen";
 import { ProductsScreen } from "./Screens/ProductsScreen";
 import { SalesScreen } from "./Screens/SalesScreen";
-import { AddOrEditProduct } from "./Screens/AddOrEditProduct";
+import { AddOrEditProduct } from "./Screens/Forms/AddOrEditProduct";
 
 //Auth Screen imports
 import { Login } from "./Screens/Auth/Login";

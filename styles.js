@@ -37,14 +37,15 @@ export const Styles = StyleSheet.create({
     marginTop: 50,
     fontSize: 30,
     fontWeight: "bold",
+    margin: 20,
   },
   Middle: {
     alignItems: "center",
     justifyContent: "center",
   },
   form: {
-    marginLeft: 10,
-    marginRight: 10,
+    marginLeft: 20,
+    marginRight: 20,
   },
   buttonStyle: {
     marginTop: 12,
