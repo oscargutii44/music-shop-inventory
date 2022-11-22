@@ -38,13 +38,15 @@ export function SignUp() {
   
       <TextInput 
       value={email} 
+      autoCapitalize="none"
       onChangeText={(email) => {setEmail(email)}}  
       placeholder='email' style={StylesAuth.TextBox}>
       </TextInput>
 
       <TextInput 
       value={password} 
-      secureTextEntry={true} 
+      autoCapitalize="none"
+      //secureTextEntry={true} 
       onChangeText={(password) => {setPassword(password)}}  
       placeholder='password' style={StylesAuth.TextBox}>
       </TextInput>

@@ -17,6 +17,18 @@ const HomeStackNav  = createNativeStackNavigator();
 
 //Creating Stack Navigation Component
 export function HomeStack() {
+
+    const isLoggedIn = false;
+
+    if (!isLoggedIn) {
+        return(
+            <HomeStackNav.Navigator initialRouteName="Login">
+            <HomeStackNav.Screen name="Login" component={Login} ></HomeStackNav.Screen>
+            <HomeStackNav.Screen name="SignUp" component={SignUp}></HomeStackNav.Screen>
+        </HomeStackNav.Navigator>
+        )
+    }
+
     return(
         <HomeStackNav.Navigator initialRouteName="HomeScreen">
             <HomeStackNav.Screen name="HomeScreen" component={HomeScreen} ></HomeStackNav.Screen>

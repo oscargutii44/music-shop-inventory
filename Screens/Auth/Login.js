@@ -50,7 +50,8 @@ export function Login() {
 
       <TextInput 
       value={password} 
-      secureTextEntry
+      //secureTextEntry
+      autoCapitalize="none"
       onChangeText={(password) => {setPassword(password)}}  
       placeholder='password' 
       style={StylesAuth.TextBox}>
@@ -59,7 +60,7 @@ export function Login() {
       <Button title='Login' onPress={Login}/>
 
       <Text>Don't have an account?</Text> 
-      <Button title='Sign Up' onPress={() => Alert.alert("to sign up")}/>
+      <Button title='Sign Up' onPress={() => navigation.navigate("SignUp")}/>
       
     </View>
     );
@@ -67,3 +68,4 @@ export function Login() {
 
   //navigation.navigate('SignUp');
   //onPress={() => navigation.navigate("SignUp")}
+  //() => Alert.alert("to sign up")
