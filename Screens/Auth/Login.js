@@ -5,29 +5,46 @@ import { initializeApp } from 'firebase/app';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StylesAuth } from './styles';
+import { HomeStack } from '../../Navigation';
 
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+let logg = ''
+console.log('initial logg value: ',logg);
 
 export function isLogged(){
-  const [logged, setLogged] = useState(false);
-  // console.log('from login file')
-  // console.log(logged);
-
-    return (
-      logged
-    );
+  logg = logg;
+    return logg
 }
 
+// export function isLoggedFalse(){
+//   logg = 'false'
+//   return logg
+// }
 
-export function Login() {
+// export function isLoggedTrue(){
+//   logg = 'true'
+//   return logg
+// }
+
+// export function HandleLogg(a){
+//   logg = a;
+//   if (logg === 'false'){
+//     return 'false';
+//   } else {
+//     return 'true';
+//   }
+// }
 
 
+export function HandleLogin() {
   const navigation = useNavigation();
   
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    // const [logged, setLogged] = useState('false');
+    // console.log('state in Login file: ', logged)
     
   
     // función con async await
@@ -36,9 +53,10 @@ export function Login() {
         try {
           //const auth = getAuth();
           await signInWithEmailAndPassword(auth, email, password);
-          setLogged
-          Alert.alert("Session Started");
-          //navigation.navigate("MainScreen");
+          //Alert.alert("Session Started");
+          logg = 'true';
+          console.log('after click logg value: ',logg)
+          //navigation.navigate("HomeStack");
         } catch (error) {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -77,6 +95,7 @@ export function Login() {
       
     </View>
     );
+  
   }
 
   //navigation.navigate('SignUp');
