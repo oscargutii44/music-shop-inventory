@@ -9,7 +9,7 @@ import { ProductsScreen } from './Screens/ProductsScreen';
 import { SalesScreen } from "./Screens/SalesScreen";
 
 //Auth Screen imports
-import { Login } from "./Screens/Auth/Login";
+import { Login, isLogged } from "./Screens/Auth/Login";
 import { SignUp } from "./Screens/Auth/SignUp";
 
 //Manupulating Stack Navigation properties
@@ -18,7 +18,7 @@ const HomeStackNav  = createNativeStackNavigator();
 //Creating Stack Navigation Component
 export function HomeStack() {
 
-    const isLoggedIn = false;
+    const isLoggedIn = isLogged();
 
     if (!isLoggedIn) {
         return(

@@ -10,6 +10,15 @@ import { StylesAuth } from './styles';
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+export function isLogged(){
+  const [logged, setLogged] = useState(false);
+  //const logged = true;
+
+    return (
+      logged
+    );
+}
+
 export function Login() {
 
   const navigation = useNavigation();
