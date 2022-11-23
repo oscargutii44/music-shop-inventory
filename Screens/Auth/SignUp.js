@@ -9,6 +9,18 @@ import { StylesAuth } from './styles';
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+export function isLoggedSignUp(){
+  const [loggedSignUp, setLoggedSignUp] = useState(false);
+  //const loggedSignUp = true; 
+
+    return (
+      loggedSignUp
+    );
+}
+
+// console.log('from signup file')
+// console.log(loggedSignUp);
+
 export function SignUp() {
   
     const [email, setEmail] = useState('');

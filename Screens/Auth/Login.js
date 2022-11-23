@@ -12,14 +12,17 @@ const auth = getAuth(app);
 
 export function isLogged(){
   const [logged, setLogged] = useState(false);
-  //const logged = true;
+  // console.log('from login file')
+  // console.log(logged);
 
     return (
       logged
     );
 }
 
+
 export function Login() {
+
 
   const navigation = useNavigation();
   
@@ -33,6 +36,7 @@ export function Login() {
         try {
           //const auth = getAuth();
           await signInWithEmailAndPassword(auth, email, password);
+          setLogged
           Alert.alert("Session Started");
           //navigation.navigate("MainScreen");
         } catch (error) {

@@ -9,8 +9,13 @@ import { ProductsScreen } from './Screens/ProductsScreen';
 import { SalesScreen } from "./Screens/SalesScreen";
 
 //Auth Screen imports
-import { Login, isLogged } from "./Screens/Auth/Login";
-import { SignUp } from "./Screens/Auth/SignUp";
+import { isLogged, Login } from "./Screens/Auth/Login";
+import { isLoggedSignUp, SignUp } from "./Screens/Auth/SignUp";
+
+// const hola = isLoggedSignUp();
+// console.log(hola);
+
+
 
 //Manupulating Stack Navigation properties
 const HomeStackNav  = createNativeStackNavigator();
@@ -18,9 +23,16 @@ const HomeStackNav  = createNativeStackNavigator();
 //Creating Stack Navigation Component
 export function HomeStack() {
 
+    //Login
     const isLoggedIn = isLogged();
+    // console.log(isLoggedIn);
 
-    if (!isLoggedIn) {
+    //SignUp
+    const isLoggedInSignUp = isLoggedSignUp();
+    // console.log(isLoggedIn);
+
+
+    if (!isLoggedIn && !isLoggedInSignUp) {
         return(
             <HomeStackNav.Navigator initialRouteName="Login">
             <HomeStackNav.Screen name="Login" component={Login} ></HomeStackNav.Screen>
