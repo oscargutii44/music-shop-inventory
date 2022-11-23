@@ -18,6 +18,7 @@ export function AddOrEditProduct() {
     model: "",
     price: 0,
     stock: 0,
+    image: "",
   });
 
   const changeText = (key, value) => {
@@ -119,6 +120,21 @@ export function AddOrEditProduct() {
               placeholderTextColor: "blueGray.50",
             }}
             onChangeText={(value) => changeText("stock", value)}
+          />
+        </View>
+
+        <View style={Styles.form}>
+          <Text>Image</Text>
+          <Input
+            variant="outline"
+            placeholder="Image url of the product"
+            _light={{
+              placeholderTextColor: "blueGray.400",
+            }}
+            _dark={{
+              placeholderTextColor: "blueGray.50",
+            }}
+            onChangeText={(value) => changeText("image", value)}
           />
         </View>
 

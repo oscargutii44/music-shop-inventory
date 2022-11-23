@@ -34,10 +34,9 @@ export const Styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   Title: {
-    marginTop: 50,
     fontSize: 30,
     fontWeight: "bold",
-    margin: 20,
+    padding: 30,
   },
   Middle: {
     alignItems: "center",
