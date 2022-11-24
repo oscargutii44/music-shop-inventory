@@ -10,33 +10,17 @@ import { HomeStack } from '../../Navigation';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-let logg = ''
-console.log('initial logg value: ',logg);
+
+let logg = 'false'
+console.log('initial logg value from Login: ',logg);
+
+
 
 export function isLogged(){
-  logg = logg;
-    return logg
+  return logg;
 }
 
-// export function isLoggedFalse(){
-//   logg = 'false'
-//   return logg
-// }
-
-// export function isLoggedTrue(){
-//   logg = 'true'
-//   return logg
-// }
-
-// export function HandleLogg(a){
-//   logg = a;
-//   if (logg === 'false'){
-//     return 'false';
-//   } else {
-//     return 'true';
-//   }
-// }
-
+console.log(isLogged());
 
 export function HandleLogin() {
   const navigation = useNavigation();
@@ -55,8 +39,8 @@ export function HandleLogin() {
           await signInWithEmailAndPassword(auth, email, password);
           //Alert.alert("Session Started");
           logg = 'true';
-          console.log('after click logg value: ',logg)
-          //navigation.navigate("HomeStack");
+          console.log('after click logg value: ',logg);
+          //navigation.navigate("HomeScreen");
         } catch (error) {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -95,8 +79,8 @@ export function HandleLogin() {
       
     </View>
     );
-  
   }
+
 
   //navigation.navigate('SignUp');
   //onPress={() => navigation.navigate("SignUp")}

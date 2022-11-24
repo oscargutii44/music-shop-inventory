@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 //Navigation imports
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -17,15 +19,6 @@ const HomeStackNav  = createNativeStackNavigator();
 
 //Creating Stack Navigation Component
 export function HomeStack() {
-
-//     //Login
-//     const isLoggedInFalse = isLoggedFalse();
-//    // console.log('from nav: ', isLoggedInFalse);
-
-//     const isLoggedInTrue = isLoggedTrue();
-//    // console.log('from nav: ', isLoggedInTrue);
-
-
     //SignUp
     // const isLoggedInSignUp = isLoggedSignUp();
     // console.log(isLoggedIn);
@@ -33,27 +26,52 @@ export function HomeStack() {
     let isLoggedIn = isLogged();
     console.log('isloggedin from nav: ', isLoggedIn);
 
+    // let estado = isLogged();
+    // console.log('estado from login in Nav: ', estado);
+
+    //const hola = (estado) => setIsLoggedIn(estado);
+    // console.log('isLoggedIn after useState: ', isLoggedIn)
     //const isLoggedIn = 'false';
     const isLoggedInSignUp = 'false';
 
-
-    if (isLoggedIn != 'true' && isLoggedInSignUp === 'false') {
-        return(
-            <HomeStackNav.Navigator initialRouteName="HandleLogin">
-            <HomeStackNav.Screen name="HandleLogin" component={HandleLogin} ></HomeStackNav.Screen>
-            <HomeStackNav.Screen name="SignUp" component={SignUp}></HomeStackNav.Screen>
-        </HomeStackNav.Navigator>
-        )
-    } else {
-        return(
-            <HomeStackNav.Navigator initialRouteName="HomeScreen">
-                <HomeStackNav.Screen name="HomeScreen" component={HomeScreen} ></HomeStackNav.Screen>
-                <HomeStackNav.Screen name="ProductsScreen" component={ProductsScreen}></HomeStackNav.Screen>
-                <HomeStackNav.Screen name="SalesScreen" component={SalesScreen}></HomeStackNav.Screen>
-                <HomeStackNav.Screen name="ClientsScreen" component={ClientsScreen}></HomeStackNav.Screen>
+    // if (isLoggedIn === 'false') {
+    //     setIsLoggedIn('true');
+    // }
+        if (isLoggedIn != 'true' && isLoggedInSignUp === 'false') {
+            return(
+                <HomeStackNav.Navigator initialRouteName="HandleLogin">
+                <HomeStackNav.Screen name="HandleLogin" component={HandleLogin} ></HomeStackNav.Screen>
+                <HomeStackNav.Screen name="SignUp" component={SignUp}></HomeStackNav.Screen>
             </HomeStackNav.Navigator>
-        )
-    }
+            )
+        } else {
+            return(
+                <HomeStackNav.Navigator initialRouteName="HomeScreen">
+                    <HomeStackNav.Screen name="HomeScreen" component={HomeScreen} ></HomeStackNav.Screen>
+                    <HomeStackNav.Screen name="ProductsScreen" component={ProductsScreen}></HomeStackNav.Screen>
+                    <HomeStackNav.Screen name="SalesScreen" component={SalesScreen}></HomeStackNav.Screen>
+                    <HomeStackNav.Screen name="ClientsScreen" component={ClientsScreen}></HomeStackNav.Screen>
+                </HomeStackNav.Navigator>
+            )
+        }
+
+    // if (isLoggedIn != 'true' && isLoggedInSignUp === 'false') {
+    //     return(
+    //         <HomeStackNav.Navigator initialRouteName="HandleLogin">
+    //         <HomeStackNav.Screen name="HandleLogin" component={HandleLogin} ></HomeStackNav.Screen>
+    //         <HomeStackNav.Screen name="SignUp" component={SignUp}></HomeStackNav.Screen>
+    //     </HomeStackNav.Navigator>
+    //     )
+    // } else {
+    //     return(
+    //         <HomeStackNav.Navigator initialRouteName="HomeScreen">
+    //             <HomeStackNav.Screen name="HomeScreen" component={HomeScreen} ></HomeStackNav.Screen>
+    //             <HomeStackNav.Screen name="ProductsScreen" component={ProductsScreen}></HomeStackNav.Screen>
+    //             <HomeStackNav.Screen name="SalesScreen" component={SalesScreen}></HomeStackNav.Screen>
+    //             <HomeStackNav.Screen name="ClientsScreen" component={ClientsScreen}></HomeStackNav.Screen>
+    //         </HomeStackNav.Navigator>
+    //     )
+    // }
     
 };
 
