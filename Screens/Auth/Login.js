@@ -1,16 +1,8 @@
 import { View, Text, Button, TextInput, Alert } from 'react-native';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { firebaseConfig  } from './firebase_config';
-import { initializeApp } from 'firebase/app';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StylesAuth } from './styles';
-import { HomeStack } from '../../Navigation';
-
-import { initializeApp } from "firebase/app";
-import { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { StylesAuth } from "./styles";
 import app from "../../db/firebaseConfig";
 
 const auth = getAuth(app);
@@ -54,30 +46,35 @@ export function HandleLogin() {
       } else {
         Alert.alert("Emtpy Fields");
       }
-    } else {
-      Alert.alert("Emtpy Fields");
     }
-  };
+    return (
+      <View style={StylesAuth.container}>
+        <Text>Login</Text>
 
-  return (
-    <View style={StylesAuth.container}>
-      <Text>Login</Text>
-      <TextInput 
-      value={password} 
-      //secureTextEntry
-      autoCapitalize="none"
-      onChangeText={(password) => {setPassword(password)}}  
-      placeholder='password' 
-      style={StylesAuth.TextBox}>
-      </TextInput>
+
+        <TextInput 
+        value={email} 
+        autoCapitalize="none"
+        onChangeText={(email) => {setEmail(email)}}  
+        placeholder='email' style={StylesAuth.TextBox}> 
+        </TextInput>
+
+        <TextInput 
+        value={password} 
+        //secureTextEntry
+        autoCapitalize="none"
+        onChangeText={(password) => {setPassword(password)}}  
+        placeholder='password' 
+        style={StylesAuth.TextBox}>
+        </TextInput>
+    
+        <Button title='Login' onPress={Login}/>
   
-      <Button title='Login' onPress={Login}/>
-
-      <Text>Don't have an account?</Text> 
-      <Button title='Sign Up' onPress={() => navigation.navigate("SignUp")}/>
-    </View>
-  );
-}
+        <Text>Don't have an account?</Text> 
+        <Button title='Sign Up' onPress={() => navigation.navigate("SignUp")}/>
+      </View>
+    );
+  };
 
 
   //navigation.navigate('SignUp');
