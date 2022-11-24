@@ -7,8 +7,12 @@ import { useNavigation } from '@react-navigation/native';
 import { StylesAuth } from './styles';
 import { HomeStack } from '../../Navigation';
 
+import { initializeApp } from "firebase/app";
+import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { StylesAuth } from "./styles";
+import app from "../../db/firebaseConfig";
 
-const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 let logg = 'false'
@@ -50,19 +54,14 @@ export function HandleLogin() {
       } else {
         Alert.alert("Emtpy Fields");
       }
-    };
-  
-    return (
-      <View style={StylesAuth.container}>
-      <Text>Login</Text>
-  
-      <TextInput 
-      value={email} 
-      autoCapitalize="none"
-      onChangeText={(email) => {setEmail(email)}}  
-      placeholder='email' style={StylesAuth.TextBox}> 
-      </TextInput>
+    } else {
+      Alert.alert("Emtpy Fields");
+    }
+  };
 
+  return (
+    <View style={StylesAuth.container}>
+      <Text>Login</Text>
       <TextInput 
       value={password} 
       //secureTextEntry
@@ -76,10 +75,9 @@ export function HandleLogin() {
 
       <Text>Don't have an account?</Text> 
       <Button title='Sign Up' onPress={() => navigation.navigate("SignUp")}/>
-      
     </View>
-    );
-  }
+  );
+}
 
 
   //navigation.navigate('SignUp');
