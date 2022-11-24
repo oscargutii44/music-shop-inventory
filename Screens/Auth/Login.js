@@ -1,6 +1,7 @@
 import { View, Text, Button, TextInput, Alert } from "react-native";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseConfig } from "../../db/firebaseConfig";
+
 import { initializeApp } from "firebase/app";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -50,7 +51,8 @@ export function Login() {
 
       <TextInput
         value={password}
-        secureTextEntry
+        autoCapitalize="none"
+        //secureTextEntry
         onChangeText={(password) => {
           setPassword(password);
         }}

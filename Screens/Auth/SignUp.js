@@ -32,27 +32,24 @@ export function SignUp() {
   return (
     <View style={StylesAuth.container}>
       <Text>Sign Up</Text>
+      
+      <TextInput
+      autoCapitalize="none" 
+      value={email} 
+      onChangeText={(email) => {setEmail(email)}}  
+      placeholder='email' style={StylesAuth.TextBox}>
+      </TextInput>
 
       <TextInput
-        value={email}
-        onChangeText={(email) => {
-          setEmail(email);
-        }}
-        placeholder="email"
-        style={StylesAuth.TextBox}
-      ></TextInput>
-
-      <TextInput
-        value={password}
-        secureTextEntry={true}
-        onChangeText={(password) => {
-          setPassword(password);
-        }}
-        placeholder="password"
-        style={StylesAuth.TextBox}
-      ></TextInput>
-
-      <Button title="Create Account" onPress={SignUp} />
+      autoCapitalize="none"
+      value={password} 
+      //secureTextEntry={true} 
+      onChangeText={(password) => {setPassword(password)}}  
+      placeholder='password' style={StylesAuth.TextBox}>
+      </TextInput>
+  
+      <Button title='Create Account' onPress={SignUp}/>
+      
     </View>
   );
 }

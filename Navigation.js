@@ -36,10 +36,6 @@ export function HomeStack() {
         name="ClientsScreen"
         component={ClientsScreen}
       ></HomeStackNav.Screen>
-      <HomeStackNav.Screen
-        name="AddOrEditProduct"
-        component={AddOrEditProduct}
-      ></HomeStackNav.Screen>
     </HomeStackNav.Navigator>
   );
 }
