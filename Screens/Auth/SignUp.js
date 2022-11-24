@@ -9,6 +9,18 @@ import app from "../../db/firebaseConfig";
 
 const auth = getAuth(app);
 
+export function isLoggedSignUp(){
+  const [loggedSignUp, setLoggedSignUp] = useState(false);
+  //const loggedSignUp = true; 
+
+    return (
+      loggedSignUp
+    );
+}
+
+// console.log('from signup file')
+// console.log(loggedSignUp);
+
 export function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,6 +48,7 @@ export function SignUp() {
       <TextInput
       autoCapitalize="none" 
       value={email} 
+      autoCapitalize="none"
       onChangeText={(email) => {setEmail(email)}}  
       placeholder='email' style={StylesAuth.TextBox}>
       </TextInput>
@@ -43,6 +56,7 @@ export function SignUp() {
       <TextInput
       autoCapitalize="none"
       value={password} 
+      autoCapitalize="none"
       //secureTextEntry={true} 
       onChangeText={(password) => {setPassword(password)}}  
       placeholder='password' style={StylesAuth.TextBox}>

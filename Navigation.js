@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 //Navigation imports
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -10,35 +12,69 @@ import { SalesScreen } from "./Screens/SalesScreen";
 import { AddOrEditProduct } from "./Screens/Forms/AddOrEditProduct";
 
 //Auth Screen imports
-import { Login } from "./Screens/Auth/Login";
-import { SignUp } from "./Screens/Auth/SignUp";
+import { isLogged, isLoggedFalse, isLoggedTrue, HandleLogin } from "./Screens/Auth/Login";
+import { isLoggedSignUp, SignUp } from "./Screens/Auth/SignUp";
 
 //Manupulating Stack Navigation properties
 const HomeStackNav = createNativeStackNavigator();
 
 //Creating Stack Navigation Component
 export function HomeStack() {
-  return (
-    <HomeStackNav.Navigator initialRouteName="HomeScreen">
-      <HomeStackNav.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-      ></HomeStackNav.Screen>
-      <HomeStackNav.Screen
-        name="ProductsScreen"
-        component={ProductsScreen}
-      ></HomeStackNav.Screen>
-      <HomeStackNav.Screen
-        name="SalesScreen"
-        component={SalesScreen}
-      ></HomeStackNav.Screen>
-      <HomeStackNav.Screen
-        name="ClientsScreen"
-        component={ClientsScreen}
-      ></HomeStackNav.Screen>
-    </HomeStackNav.Navigator>
-  );
-}
+    //SignUp
+    // const isLoggedInSignUp = isLoggedSignUp();
+    // console.log(isLoggedIn);
+
+    let isLoggedIn = isLogged();
+    console.log('isloggedin from nav: ', isLoggedIn);
+
+    // let estado = isLogged();
+    // console.log('estado from login in Nav: ', estado);
+
+    //const hola = (estado) => setIsLoggedIn(estado);
+    // console.log('isLoggedIn after useState: ', isLoggedIn)
+    //const isLoggedIn = 'false';
+    const isLoggedInSignUp = 'false';
+
+    // if (isLoggedIn === 'false') {
+    //     setIsLoggedIn('true');
+    // }
+        if (isLoggedIn != 'true' && isLoggedInSignUp === 'false') {
+            return(
+                <HomeStackNav.Navigator initialRouteName="HandleLogin">
+                <HomeStackNav.Screen name="HandleLogin" component={HandleLogin} ></HomeStackNav.Screen>
+                <HomeStackNav.Screen name="SignUp" component={SignUp}></HomeStackNav.Screen>
+            </HomeStackNav.Navigator>
+            )
+        } else {
+            return(
+                <HomeStackNav.Navigator initialRouteName="HomeScreen">
+                    <HomeStackNav.Screen name="HomeScreen" component={HomeScreen} ></HomeStackNav.Screen>
+                    <HomeStackNav.Screen name="ProductsScreen" component={ProductsScreen}></HomeStackNav.Screen>
+                    <HomeStackNav.Screen name="SalesScreen" component={SalesScreen}></HomeStackNav.Screen>
+                    <HomeStackNav.Screen name="ClientsScreen" component={ClientsScreen}></HomeStackNav.Screen>
+                </HomeStackNav.Navigator>
+            )
+        }
+
+    // if (isLoggedIn != 'true' && isLoggedInSignUp === 'false') {
+    //     return(
+    //         <HomeStackNav.Navigator initialRouteName="HandleLogin">
+    //         <HomeStackNav.Screen name="HandleLogin" component={HandleLogin} ></HomeStackNav.Screen>
+    //         <HomeStackNav.Screen name="SignUp" component={SignUp}></HomeStackNav.Screen>
+    //     </HomeStackNav.Navigator>
+    //     )
+    // } else {
+    //     return(
+    //         <HomeStackNav.Navigator initialRouteName="HomeScreen">
+    //             <HomeStackNav.Screen name="HomeScreen" component={HomeScreen} ></HomeStackNav.Screen>
+    //             <HomeStackNav.Screen name="ProductsScreen" component={ProductsScreen}></HomeStackNav.Screen>
+    //             <HomeStackNav.Screen name="SalesScreen" component={SalesScreen}></HomeStackNav.Screen>
+    //             <HomeStackNav.Screen name="ClientsScreen" component={ClientsScreen}></HomeStackNav.Screen>
+    //         </HomeStackNav.Navigator>
+    //     )
+    // }
+    
+};
 
 // const RootTabs =  createBottomTabNavigator();
 
