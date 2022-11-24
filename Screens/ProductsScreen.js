@@ -4,6 +4,7 @@ import {
   Alert,
   TouchableOpacity,
   ScrollView,
+  Modal,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Styles } from "../styles";
@@ -18,8 +19,10 @@ import {
 } from "firebase/firestore";
 import { Box, Stack, NativeBaseProvider, Image, Text } from "native-base";
 import app from "../db/firebaseConfig";
+import { AddOrEditProduct } from "./Forms/AddOrEditProduct";
 
 const db = getFirestore();
+let editableProductId = "";
 
 export function ProductsScreen() {
   const navigation = useNavigation();
@@ -31,7 +34,6 @@ export function ProductsScreen() {
     querySnapshot.forEach((doc) => {
       res.push([doc.id, doc.data()]);
     });
-
     setData(res);
   }
   useEffect(() => {
@@ -49,7 +51,6 @@ export function ProductsScreen() {
         {
           text: "Ok",
           onPress: async () => {
-            console.log(id);
             await deleteProduct(id);
             await getProducts();
           },
@@ -93,17 +94,26 @@ export function ProductsScreen() {
                   alt="delete"
                 />
               </TouchableOpacity>
-              <Image
-                source={require("../assets/edit.png")}
-                size="xs"
-                alt="edit"
-              />
+              <TouchableOpacity
+                onPress={() => {
+                  editableProductId = product[0];
+                  setModalVisible(true);
+                }}
+              >
+                <Image
+                  source={require("../assets/edit.png")}
+                  size="xs"
+                  alt="edit"
+                />
+              </TouchableOpacity>
             </Stack>
           </Stack>
         </Box>
       </View>
     );
   }
+
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <NativeBaseProvider>
@@ -126,6 +136,18 @@ export function ProductsScreen() {
           return productCard(product);
         })}
       </ScrollView>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+          editableProductId = "";
+          getProducts();
+        }}
+      >
+        <AddOrEditProduct id={editableProductId} />
+      </Modal>
     </NativeBaseProvider>
   );
 }

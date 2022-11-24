@@ -43,8 +43,7 @@ export const Styles = StyleSheet.create({
     justifyContent: "center",
   },
   form: {
-    marginLeft: 20,
-    marginRight: 20,
+    margin: 8,
   },
   buttonStyle: {
     marginTop: 12,

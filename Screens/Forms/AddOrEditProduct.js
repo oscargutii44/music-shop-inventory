@@ -1,52 +1,97 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import { Input, NativeBaseProvider, Button } from "native-base";
 import { Styles } from "../../styles";
-import { collection, addDoc, getFirestore } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+} from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
 import app from "../../db/firebaseConfig";
 
-export function AddOrEditProduct() {
+export function AddOrEditProduct(props) {
   const navigation = useNavigation();
 
   const db = getFirestore();
 
   const [product, setProduct] = useState({
-    type: "",
     brand: "",
-    model: "",
-    price: 0,
-    stock: 0,
     image: "",
+    model: "",
+    price: "0",
+    stock: "0",
+    type: "",
   });
+
+  let buttonText;
+
+  if (props.id === undefined) {
+    buttonText = "Add product";
+  } else {
+    buttonText = "Edit product";
+    useEffect(() => {
+      GetProduct(props.id);
+    }, []);
+  }
 
   const changeText = (key, value) => {
     setProduct({ ...product, [key]: value });
   };
 
   const AddProduct = () => {
-    let i = 0;
-    if (product.name === "" || product.desc === "") {
-      Alert.alert("Campo vacío");
-    } else if (product.desc === "") {
-      Alert.alert("Campo vacío");
-    } else {
-      onSend(product);
-      Alert.alert("Product registered");
-      navigation.navigate("ProductsScreen");
-    }
+    onSend(product);
+    Alert.alert("Product registered");
+    navigation.navigate("ProductsScreen");
+  };
+
+  async function GetProduct(id) {
+    const docSnap = await getDoc(doc(db, "products", id));
+    setProduct(docSnap.data());
+  }
+
+  const EditProduct = async (id) => {
+    await setDoc(doc(db, "products", id.id), {
+      type: product.type,
+      brand: product.brand,
+      model: product.model,
+      price: product.price,
+      stock: product.stock,
+      image: product.image,
+    });
+    Alert.alert("Product edited");
   };
 
   const onSend = async () => {
     const docRef = await addDoc(collection(db, "products/"), product);
   };
 
+  function AddOrEditButton(id) {
+    return (
+      <Button
+        style={Styles.buttonDesign}
+        onPress={() => {
+          if (buttonText === "Add product") {
+            AddProduct();
+          } else {
+            EditProduct(id);
+          }
+        }}
+      >
+        <Text style={Styles.buttonText}>{buttonText}</Text>
+      </Button>
+    );
+  }
+
   return (
     <NativeBaseProvider>
       <View style={Styles.container}>
         <View style={Styles.Middle}>
-          <Text style={Styles.Title}>Product</Text>
+          <Text style={Styles.Title}>{product.model}</Text>
         </View>
         <View style={Styles.form}>
           <Text>Type</Text>
@@ -137,11 +182,8 @@ export function AddOrEditProduct() {
             onChangeText={(value) => changeText("image", value)}
           />
         </View>
-
-        <View style={Styles.buttonStyle}>
-          <Button style={Styles.buttonDesign} onPress={() => AddProduct()}>
-            <Text style={Styles.buttonText}>Add product</Text>
-          </Button>
+        <View style={Styles.form}>
+          <AddOrEditButton id={props.id} />
         </View>
       </View>
     </NativeBaseProvider>
