@@ -1,12 +1,13 @@
 import { View, Text, Button, TextInput, Alert } from "react-native";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { firebaseConfig } from "./firebase_config";
+import { firebaseConfig } from "../../db/firebaseConfig";
+
 import { initializeApp } from "firebase/app";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StylesAuth } from "./styles";
+import app from "../../db/firebaseConfig";
 
-const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 export function Login() {
